@@ -16,6 +16,7 @@ import net.minecraft.world.scores.Scoreboard;
 
 public final class ScoreCache {
     private static final Map<String, Integer> VALUES = new HashMap<>();
+    private static Integer dialogChronotons;
     private static final Map<String, Map<String, Integer>> HOLDERS = new HashMap<>();
 
     private ScoreCache() {
@@ -23,6 +24,7 @@ public final class ScoreCache {
 
     public static void clear() {
         VALUES.clear();
+        dialogChronotons = null;
         HOLDERS.clear();
     }
 
@@ -30,6 +32,10 @@ public final class ScoreCache {
         if (objectiveName != null && !objectiveName.isBlank()) {
             VALUES.put(objectiveName, value);
         }
+    }
+
+    public static void putDialogChronotons(int value) {
+        dialogChronotons = value;
     }
 
     public static void putHolder(String objectiveName, String holderName, int value) {
@@ -45,13 +51,17 @@ public final class ScoreCache {
     }
 
     public static OptionalInt get(String objectiveName) {
-        OptionalInt live = readLive(objectiveName);
-        if (live.isPresent()) {
-            VALUES.put(objectiveName, live.getAsInt());
-            return live;
+        if ("CHRONOTON".equals(objectiveName) && dialogChronotons != null) {
+            return OptionalInt.of(dialogChronotons);
         } else {
-            Integer cached = VALUES.get(objectiveName);
-            return cached == null ? OptionalInt.empty() : OptionalInt.of(cached);
+            OptionalInt live = readLive(objectiveName);
+            if (live.isPresent()) {
+                VALUES.put(objectiveName, live.getAsInt());
+                return live;
+            } else {
+                Integer cached = VALUES.get(objectiveName);
+                return cached == null ? OptionalInt.empty() : OptionalInt.of(cached);
+            }
         }
     }
 
@@ -74,24 +84,28 @@ public final class ScoreCache {
             Scoreboard scoreboard = client.level.getScoreboard();
             Objective objective = scoreboard.getObjective(objectiveName);
             Objective listObjective = scoreboard.getDisplayObjective(DisplaySlot.LIST);
-            if (objective == null && listObjective != null && objectiveName.equals(listObjective.getName())) {
-                objective = listObjective;
-            }
+            if (!"CHRONOTON".equals(objectiveName) || listObjective != null && objectiveName.equals(listObjective.getName())) {
+                if (objective == null && listObjective != null && objectiveName.equals(listObjective.getName())) {
+                    objective = listObjective;
+                }
 
-            if (objective == null) {
+                if (objective == null) {
+                    return OptionalInt.empty();
+                }
+
+                ReadOnlyScoreInfo info = scoreboard.getPlayerScoreInfo(player, objective);
+                Integer direct = info == null ? null : info.value();
+                return ScoreboardLiveRead.read(
+                    objectiveName,
+                    player.getScoreboardName(),
+                    objective.getName(),
+                    listObjective == null ? null : listObjective.getName(),
+                    direct,
+                    listedEntries(scoreboard, objective)
+                );
+            } else {
                 return OptionalInt.empty();
             }
-
-            ReadOnlyScoreInfo info = scoreboard.getPlayerScoreInfo(player, objective);
-            Integer direct = info == null ? null : info.value();
-            return ScoreboardLiveRead.read(
-                objectiveName,
-                player.getScoreboardName(),
-                objective.getName(),
-                listObjective == null ? null : listObjective.getName(),
-                direct,
-                listedEntries(scoreboard, objective)
-            );
         } else {
             return OptionalInt.empty();
         }
@@ -154,15 +168,18 @@ public final class ScoreCache {
     }
 
     private static void cacheObjective(LocalPlayer player, Scoreboard scoreboard, Objective objective) {
-        ReadOnlyScoreInfo info = scoreboard.getPlayerScoreInfo(player, objective);
-        Integer direct = info == null ? null : info.value();
-        List<PlayerListScore.Entry> listed = listedEntries(scoreboard, objective);
-        ScoreboardLiveRead.read(objective.getName(), player.getScoreboardName(), objective.getName(), null, direct, listed)
-            .ifPresent(value -> VALUES.put(objective.getName(), value));
-        Map<String, Integer> holders = HOLDERS.computeIfAbsent(objective.getName(), key -> new HashMap<>());
+        Objective listObjective = scoreboard.getDisplayObjective(DisplaySlot.LIST);
+        if (!"CHRONOTON".equals(objective.getName()) || listObjective != null && objective.getName().equals(listObjective.getName())) {
+            ReadOnlyScoreInfo info = scoreboard.getPlayerScoreInfo(player, objective);
+            Integer direct = info == null ? null : info.value();
+            List<PlayerListScore.Entry> listed = listedEntries(scoreboard, objective);
+            ScoreboardLiveRead.read(objective.getName(), player.getScoreboardName(), objective.getName(), null, direct, listed)
+                .ifPresent(value -> VALUES.put(objective.getName(), value));
+            Map<String, Integer> holders = HOLDERS.computeIfAbsent(objective.getName(), key -> new HashMap<>());
 
-        for (PlayerListScore.Entry entry : listed) {
-            holders.put(entry.owner(), entry.value());
+            for (PlayerListScore.Entry entry : listed) {
+                holders.put(entry.owner(), entry.value());
+            }
         }
     }
 

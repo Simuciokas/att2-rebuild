@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "Quests",
+  "screen.hud_config.render_rarity.esc": "Souveräne Chaosschuppe anzeigen",
+  "ui.close": "Schließen",
   "screen.hud_config.title": "HUD-Konfiguration",
   "screen.hud_config.show_chronoton": "Chronoton anzeigen",
   "screen.hud_config.show_xp": "XP anzeigen",

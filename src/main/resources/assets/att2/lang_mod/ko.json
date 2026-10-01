@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "퀘스트",
+  "screen.hud_config.render_rarity.esc": "혼돈의 군주 비늘 표시",
+  "ui.close": "닫기",
   "screen.hud_config.title": "HUD 설정",
   "screen.hud_config.show_chronoton": "Chronoton 표시",
   "screen.hud_config.show_xp": "XP 표시",

@@ -12,6 +12,7 @@ import net.minecraft.server.dialog.body.PlainMessage;
 public final class CurrencyModel {
     private static boolean listening;
     private static boolean asked;
+    private static boolean received;
 
     private CurrencyModel() {
     }
@@ -32,6 +33,11 @@ public final class CurrencyModel {
     public static void reset() {
         listening = false;
         asked = false;
+        received = false;
+    }
+
+    public static boolean hasData() {
+        return received;
     }
 
     public static boolean isListening() {
@@ -49,10 +55,12 @@ public final class CurrencyModel {
         }
 
         CurrencyDialogParser.Snapshot s = snap.get();
-        ScoreCache.put("CHRONOTON", s.chronotons());
+        ScoreCache.putDialogChronotons(s.chronotons());
         ScoreCache.put("ESC", s.esc());
         ScoreCache.putHolder("RUNE_POWDER", "#stock", s.runePowder());
         listening = false;
+        asked = false;
+        received = true;
         return true;
     }
 

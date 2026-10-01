@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "المهام",
+  "screen.hud_config.render_rarity.esc": "إظهار حرشفة سيد الفوضى",
+  "ui.close": "إغلاق",
   "screen.hud_config.title": "إعدادات HUD",
   "screen.hud_config.show_chronoton": "إظهار Chronoton",
   "screen.hud_config.show_xp": "إظهار XP",

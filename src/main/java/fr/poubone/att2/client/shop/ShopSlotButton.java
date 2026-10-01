@@ -1,6 +1,7 @@
 package fr.poubone.att2.client.shop;
 
 import java.util.List;
+import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
@@ -37,7 +38,11 @@ public class ShopSlotButton extends AbstractWidget {
     }
 
     public List<Component> tooltipLines() {
-        return ShopTooltips.forOffer(this.offer, this.displayName());
+        return ShopTooltips.forOffer(this.offer, plainCardText(this.displayName()));
+    }
+
+    private static Component plainCardText(Component text) {
+        return Component.literal(ChatFormatting.stripFormatting(text.getString()));
     }
 
     private Component displayName() {
@@ -80,7 +85,7 @@ public class ShopSlotButton extends AbstractWidget {
         float textScale = s * 2.7F;
         ShopTheme.text(
             graphics,
-            this.displayName(),
+            plainCardText(this.displayName()),
             this.getX() + Math.round(14.0F * s),
             this.getY() + Math.round(141.0F * s),
             this.width - Math.round(28.0F * s),
@@ -103,7 +108,7 @@ public class ShopSlotButton extends AbstractWidget {
         int buyW = Math.round(276.0F * s);
         int buyH = Math.round(38.0F * s);
         ShopSkin.texture(graphics, this.theme, hover ? "button_buy_hover" : "button_buy_normal", buyX, buyY, buyW, buyH, 276, 38);
-        Component price = this.offer.price() == null ? Component.literal("?") : this.offer.price();
+        Component price = this.offer.price() == null ? Component.literal("?") : plainCardText(this.offer.price());
         float priceScale = s * 2.3F;
         ShopTheme.text(
             graphics, price, buyX + 2, buyY + Math.max(1, (int)((buyH - 8.0F * priceScale) / 2.0F)), buyW - 4, priceScale, hover ? -660784 : -13096159, true

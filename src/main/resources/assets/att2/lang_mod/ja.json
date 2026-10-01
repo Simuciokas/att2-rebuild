@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "クエスト",
+  "screen.hud_config.render_rarity.esc": "混沌の君主の鱗を表示",
+  "ui.close": "閉じる",
   "screen.hud_config.title": "HUD設定",
   "screen.hud_config.show_chronoton": "Chronotonを表示",
   "screen.hud_config.show_xp": "XPを表示",

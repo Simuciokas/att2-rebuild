@@ -1,5 +1,6 @@
 package fr.poubone.att2.mixin;
 
+import fr.poubone.att2.client.data.CurrencyEnabler;
 import fr.poubone.att2.client.gambling.GamblingModel;
 import fr.poubone.att2.client.hud.CityToast;
 import fr.poubone.att2.client.teleport.TeleportCommandSender;
@@ -36,6 +37,9 @@ public abstract class ClientPacketListenerMixin {
         if (Minecraft.getInstance().isSameThread()) {
             WaypointTeleportDetector.onSoundPacket(packet.getSound().value().location(), packet.getSource(), packet.getX(), packet.getY(), packet.getZ());
             GamblingModel.get().onSound(packet.getSound().value().location(), packet.getSource());
+            CurrencyEnabler.onCurrencySound(
+                packet.getSound().value().location(), packet.getSource(), packet.getPitch(), packet.getX(), packet.getY(), packet.getZ()
+            );
         }
     }
 

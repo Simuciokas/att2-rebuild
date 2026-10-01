@@ -91,7 +91,7 @@ public class CharlesScreen extends ShopPanelScreen {
         this.initViewport();
         this.offsetX = 0;
         this.offsetY = 0;
-        this.chrome(714, 25, 22, 22, Component.translatable("gui.close"), ShopActionButton.Chrome.CLOSE, ShopType.CHARLES, this::onClose);
+        this.chrome(714, 25, 22, 22, ModLanguageManager.get("ui.close"), ShopActionButton.Chrome.CLOSE, ShopType.CHARLES, this::onClose);
         this.chrome(520, 70, 80, 20, ModLanguageManager.get("charles.reload"), ShopActionButton.Chrome.ACTION, ShopType.CHARLES, this::requestCurrentTab);
 
         for (CharlesScreen.Tab value : CharlesScreen.Tab.values()) {

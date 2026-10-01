@@ -17,23 +17,18 @@ public final class CurrencyDialogParser {
     public static Optional<CurrencyDialogParser.Snapshot> parse(Component body) {
         if (body == null) {
             return Optional.empty();
+        } else {
+            return !DialogComponents.hasKey(body, "consciousness.currency.chronotons")
+                ? Optional.empty()
+                : Optional.of(
+                    new CurrencyDialogParser.Snapshot(
+                        firstArg(body, "consciousness.currency.chronotons"),
+                        firstArg(body, "consciousness.currency.esc"),
+                        firstArg(body, "consciousness.currency.rune_material"),
+                        firstArg(body, "consciousness.currency.bank")
+                    )
+                );
         }
-
-        boolean relevant = DialogComponents.hasKey(body, "consciousness.currency.title")
-            || DialogComponents.hasKey(body, "consciousness.currency.chronotons")
-            || DialogComponents.hasKey(body, "consciousness.currency.esc")
-            || DialogComponents.hasKey(body, "consciousness.currency.rune_material")
-            || DialogComponents.hasKey(body, "consciousness.currency.bank");
-        return !relevant
-            ? Optional.empty()
-            : Optional.of(
-                new CurrencyDialogParser.Snapshot(
-                    firstArg(body, "consciousness.currency.chronotons"),
-                    firstArg(body, "consciousness.currency.esc"),
-                    firstArg(body, "consciousness.currency.rune_material"),
-                    firstArg(body, "consciousness.currency.bank")
-                )
-            );
     }
 
     private static int firstArg(Component body, String key) {

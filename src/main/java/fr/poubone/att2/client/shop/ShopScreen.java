@@ -98,10 +98,6 @@ public class ShopScreen extends Screen {
         if (ShopModel.get().version() != this.lastVersion) {
             this.rebuild();
         }
-
-        if (ShopModel.get().catalog().usesEsc()) {
-            CurrencyModel.request();
-        }
     }
 
     @Override
@@ -121,10 +117,7 @@ public class ShopScreen extends Screen {
 
         this.type = catalog.type();
         this.lastVersion = model.version();
-        if (catalog.usesEsc()) {
-            CurrencyModel.request();
-        }
-
+        CurrencyModel.request();
         if (catalog.offers().isEmpty() && model.isCollecting() && !catalog.categories().isEmpty()) {
             this.categories = List.copyOf(catalog.categories());
         } else {
@@ -257,7 +250,7 @@ public class ShopScreen extends Screen {
             51,
             42,
             42,
-            new ShopAction(-1, Component.translatable("gui.close"), null, ShopAction.Kind.OTHER),
+            new ShopAction(-1, ModLanguageManager.get("ui.close"), null, ShopAction.Kind.OTHER),
             ShopActionButton.Chrome.CLOSE,
             () -> false,
             this::onClose

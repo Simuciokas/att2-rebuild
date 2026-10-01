@@ -1,6 +1,7 @@
 package fr.poubone.att2.client.miner;
 
 import fr.poubone.att2.client.data.Att2Triggers;
+import fr.poubone.att2.client.data.CurrencyEnabler;
 import fr.poubone.att2.client.data.CurrencyModel;
 import fr.poubone.att2.client.hud.HUDConfig;
 import fr.poubone.att2.client.rune.RuneCatalog;
@@ -100,6 +101,7 @@ public final class MinerShopModel {
 
     public void send(int trigger) {
         Att2Triggers.sendAlways(trigger);
+        CurrencyEnabler.onTransaction();
     }
 
     public void openFromNpc() {

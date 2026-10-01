@@ -53,19 +53,25 @@ public final class Att2Triggers {
         QUEUE.addLast(trigger);
     }
 
+    public static boolean isGameplayPaused(Minecraft client) {
+        return client.isPaused() || client.screen != null && client.screen.isPauseScreen();
+    }
+
     public static void tick(Minecraft client) {
-        if (cooldown > 0) {
-            cooldown--;
-        } else {
-            LocalPlayer player = client.player;
-            if (player != null && player.connection != null) {
-                Integer trigger = QUEUE.pollFirst();
-                if (trigger != null) {
-                    cooldown = 2;
-                    player.connection.sendCommand(command(trigger));
-                }
+        if (!isGameplayPaused(client)) {
+            if (cooldown > 0) {
+                cooldown--;
             } else {
-                QUEUE.clear();
+                LocalPlayer player = client.player;
+                if (player != null && player.connection != null) {
+                    Integer trigger = QUEUE.pollFirst();
+                    if (trigger != null) {
+                        cooldown = 2;
+                        player.connection.sendCommand(command(trigger));
+                    }
+                } else {
+                    QUEUE.clear();
+                }
             }
         }
     }

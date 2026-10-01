@@ -3,6 +3,7 @@ package fr.poubone.att2.client;
 import com.lootbeams.LootBeams;
 import fr.poubone.att2.client.data.Att2Triggers;
 import fr.poubone.att2.client.data.ChronotonPickupTracker;
+import fr.poubone.att2.client.data.CurrencyEnabler;
 import fr.poubone.att2.client.data.CurrencyModel;
 import fr.poubone.att2.client.data.LootShimmerTracker;
 import fr.poubone.att2.client.data.MapStatBar;
@@ -93,6 +94,7 @@ public class ATT2_ProjectClient implements ClientModInitializer {
             Att2Triggers.tick(client);
             MapStatDisplayEnabler.tick(client);
             PlayerInfoEnabler.tick(client);
+            CurrencyEnabler.tick(client);
             InputSequencer.tick(client);
             ScoreboardSync.tick(client);
             WaypointTeleportDetector.tick(client);
@@ -132,6 +134,7 @@ public class ATT2_ProjectClient implements ClientModInitializer {
             PlayerInfoEnabler.reset();
             PlayerInfoModel.reset();
             CurrencyModel.reset();
+            CurrencyEnabler.reset();
             QuestModel.get().reset();
             StatUpgradeModel.reset();
             GamblingModel.get().reset();
@@ -161,6 +164,7 @@ public class ATT2_ProjectClient implements ClientModInitializer {
             PlayerInfoEnabler.reset();
             PlayerInfoModel.reset();
             CurrencyModel.reset();
+            CurrencyEnabler.reset();
             QuestModel.get().reset();
             StatUpgradeModel.reset();
             GamblingModel.get().reset();

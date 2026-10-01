@@ -59,7 +59,7 @@ public class KeybindManager {
         collectItems = key("collect_items", 67);
         questBook = key("quest_main", 66);
         repairItemMenuKey = key("repair_menu", 73);
-        whistle = key("whistle", 87);
+        whistle = key("whistle", 86);
         openHUDConfig = key("hud_config", 75);
         broadcastKey = key("broadcast", 79);
         pingKey = KeyBindingHelper.registerKeyBinding(new KeyMapping("key.att2.ping", Type.MOUSE, 4, CATEGORY));

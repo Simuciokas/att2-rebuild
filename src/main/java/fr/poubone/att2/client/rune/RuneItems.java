@@ -237,6 +237,12 @@ public final class RuneItems {
             case "loot_runes" -> named(Items.GLOWSTONE_DUST, info.nameKey());
             case "extraloot" -> named(Items.CHEST, info.nameKey());
             case "elixir" -> named(Items.POTION, info.nameKey());
+            case "rune_bundle" -> {
+                ItemStack stack = pouchIcon();
+                stack.set(DataComponents.CUSTOM_NAME, Component.translatable(info.nameKey()));
+                yield stack;
+            }
+            case "spell_bundle_1", "spell_bundle_2", "spell_bundle_3" -> named(Items.BLUE_BUNDLE, info.nameKey());
             default -> named(Items.BOOK, info.nameKey());
         };
     }

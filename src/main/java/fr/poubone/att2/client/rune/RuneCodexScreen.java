@@ -113,7 +113,7 @@ public class RuneCodexScreen extends ShopPanelScreen {
             this.prevNav = null;
             this.nextNav = null;
             this.buildTabs();
-            this.chrome(603, 22, 18, 18, Component.translatable("gui.close"), ShopActionButton.Chrome.CLOSE, TYPE, this::onClose);
+            this.chrome(603, 22, 18, 18, ModLanguageManager.get("ui.close"), ShopActionButton.Chrome.CLOSE, TYPE, this::onClose);
         } else {
             for (RuneRecipeRow row : this.rows) {
                 this.removeWidget(row);
@@ -421,12 +421,21 @@ public class RuneCodexScreen extends ShopPanelScreen {
 
             List<Component> caption = new ArrayList<>();
             caption.add(name);
+            Component recipe = pouchRecipe(info.id());
+            if (recipe != null) {
+                caption.add(recipe);
+            }
+
             if (info.tipKey() != null) {
                 caption.add(Component.translatable(info.tipKey()).withStyle(ChatFormatting.GRAY));
             }
 
             List<Component> extra = new ArrayList<>();
             extra.add(name.copy().withStyle(ChatFormatting.BOLD));
+            if (recipe != null) {
+                extra.add(recipe);
+            }
+
             if (info.tipKey() != null) {
                 extra.add(Component.translatable(info.tipKey()).withStyle(ChatFormatting.GRAY));
             }
@@ -439,6 +448,16 @@ public class RuneCodexScreen extends ShopPanelScreen {
         }
 
         return drafts;
+    }
+
+    private static Component pouchRecipe(String id) {
+        return switch (id) {
+            case "rune_bundle" -> Component.literal("Ra + Ust + ").append(Component.translatable("att2.misc.bundle")).append(" + Nym + Ehl");
+            case "spell_bundle_1" -> Component.literal("Tha + Org + ").append(Component.translatable("att2.misc.bundle")).append(" + Ra + Inu");
+            case "spell_bundle_2" -> Component.literal("Von + Ave + ").append(Component.translatable("att2.misc.spell_bundle_1.name")).append(" + For + Wej");
+            case "spell_bundle_3" -> Component.literal("Da + Ave + ").append(Component.translatable("att2.misc.spell_bundle_2.name")).append(" + Ra + Bex");
+            default -> null;
+        };
     }
 
     private void addIngredientLines(List<Component> tooltip, LocalPlayer player, List<RuneCatalog.Ingredient> ingredients) {

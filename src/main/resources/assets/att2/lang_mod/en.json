@@ -1,4 +1,5 @@
 {
+  "ui.close": "Close",
   "party_sync.unreachable": "Party-sync is unreachable: check your connection or API URL.",
   "party_sync.http_error": "The Party-sync API rejected the request.",
   "party_sync.rate_limited": "Too many pings or shares: wait a moment. The last request was not shared.",

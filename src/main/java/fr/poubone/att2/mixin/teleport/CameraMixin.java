@@ -17,7 +17,7 @@ public abstract class CameraMixin {
     ) {
         TeleportTransitionController.CameraFrame frame = TeleportTransitionController.getCameraFrame(tickProgress);
         if (frame != null) {
-            CameraAccessor accessor = (CameraAccessor)this;
+            CameraAccessor accessor = (CameraAccessor)(Object)this;
             accessor.gtalikeTeleport$setPosition(frame.pos());
             accessor.gtalikeTeleport$setRotation(frame.yaw(), frame.pitch());
             TeleportTransitionController.requestTerrainVisibilityUpdate(frame.pos());

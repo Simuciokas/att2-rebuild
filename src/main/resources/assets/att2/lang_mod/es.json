@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "Misiones",
+  "screen.hud_config.render_rarity.esc": "Mostrar escama soberana del caos",
+  "ui.close": "Cerrar",
   "screen.hud_config.title": "Configuración del HUD",
   "screen.hud_config.show_chronoton": "Mostrar Chronoton",
   "screen.hud_config.show_xp": "Mostrar XP",

@@ -96,7 +96,11 @@ public final class RuneCatalog {
         new RuneCatalog.InfoDef("reforge", "att2.runes.recipe.item_reforging", "att2.runes.recipe.item_reforging.tip"),
         new RuneCatalog.InfoDef("loot_runes", "item.recipe.loot_runes", null),
         new RuneCatalog.InfoDef("extraloot", "item.recipe.extraloot", null),
-        new RuneCatalog.InfoDef("elixir", "item.recipe.elixirvitae", null)
+        new RuneCatalog.InfoDef("elixir", "item.recipe.elixirvitae", null),
+        new RuneCatalog.InfoDef("rune_bundle", "item.rune_bundle.name", null),
+        new RuneCatalog.InfoDef("spell_bundle_1", "att2.misc.spell_bundle_1.name", null),
+        new RuneCatalog.InfoDef("spell_bundle_2", "att2.misc.spell_bundle_2.name", null),
+        new RuneCatalog.InfoDef("spell_bundle_3", "att2.misc.spell_bundle_3.name", null)
     );
     private static final List<RuneCatalog.BonusDef> BONUSES = List.of(
         new RuneCatalog.BonusDef("#XPTotal", "rune_codex.bonus.xp", "%"),
@@ -271,7 +275,11 @@ public final class RuneCatalog {
 
     public record WordDef(int wordId, int trigger, List<RuneCatalog.Ingredient> ingredients) {
         public String nameKey() {
-            return "item.runeword." + this.wordId + ".name";
+            return switch (this.wordId) {
+                case 20 -> "item.runeword.stock_upgrade";
+                case 21 -> "att2.spell31.name";
+                default -> "item.runeword." + this.wordId + ".name";
+            };
         }
     }
 }

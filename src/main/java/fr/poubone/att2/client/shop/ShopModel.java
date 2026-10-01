@@ -1,6 +1,7 @@
 package fr.poubone.att2.client.shop;
 
 import fr.poubone.att2.client.data.Att2Triggers;
+import fr.poubone.att2.client.data.CurrencyEnabler;
 import fr.poubone.att2.client.gambling.CharlesScreen;
 import fr.poubone.att2.client.hud.HUDConfig;
 import fr.poubone.att2.client.miner.MinerCatalog;
@@ -792,6 +793,7 @@ public final class ShopModel {
     public void buy(ShopOffer offer) {
         if (offer != null && offer.trigger() >= 0) {
             Att2Triggers.send(offer.trigger());
+            CurrencyEnabler.onTransaction();
         }
     }
 
@@ -807,9 +809,11 @@ public final class ShopModel {
             } else if (action.trigger() >= 0) {
                 if (action.kind() != ShopAction.Kind.RESET && action.trigger() != 423) {
                     Att2Triggers.send(action.trigger());
+                    CurrencyEnabler.onTransaction();
                 } else {
                     this.startCatalogRefresh();
                     Att2Triggers.send(423);
+                    CurrencyEnabler.onTransaction();
                     if (this.lastOpeningTrigger > 0) {
                         Att2Triggers.send(this.lastOpeningTrigger);
                     }

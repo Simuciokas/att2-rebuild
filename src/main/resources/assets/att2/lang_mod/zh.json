@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "任务",
+  "screen.hud_config.render_rarity.esc": "显示混沌君主鳞片",
+  "ui.close": "关闭",
   "screen.hud_config.title": "HUD 配置",
   "screen.hud_config.show_chronoton": "显示 Chronoton",
   "screen.hud_config.show_xp": "显示 XP",

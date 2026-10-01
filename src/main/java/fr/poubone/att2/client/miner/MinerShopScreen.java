@@ -107,7 +107,7 @@ public class MinerShopScreen extends ShopPanelScreen {
             this.prevNav = null;
             this.nextNav = null;
             this.buildTabs();
-            this.chrome(603, 22, 18, 18, Component.translatable("gui.close"), ShopActionButton.Chrome.CLOSE, TYPE, this::onClose);
+            this.chrome(603, 22, 18, 18, ModLanguageManager.get("ui.close"), ShopActionButton.Chrome.CLOSE, TYPE, this::onClose);
         } else {
             for (GuiEventListener child : List.copyOf(this.children())) {
                 if (child instanceof ShopSlotButton) {

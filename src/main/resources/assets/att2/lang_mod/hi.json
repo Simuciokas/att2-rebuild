@@ -1,4 +1,7 @@
 {
+  "screen.hud_config.cat.quests": "कार्य",
+  "screen.hud_config.render_rarity.esc": "अराजकता के अधिपति की शल्क दिखाएँ",
+  "ui.close": "बंद करें",
   "screen.hud_config.title": "HUD कॉन्फ़िगरेशन",
   "screen.hud_config.show_chronoton": "Chronoton दिखाएँ",
   "screen.hud_config.show_xp": "XP दिखाएँ",

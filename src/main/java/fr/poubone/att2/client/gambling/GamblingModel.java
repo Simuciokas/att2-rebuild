@@ -1,6 +1,7 @@
 package fr.poubone.att2.client.gambling;
 
 import fr.poubone.att2.client.data.Att2Triggers;
+import fr.poubone.att2.client.data.CurrencyEnabler;
 import fr.poubone.att2.client.hud.HUDConfig;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -108,6 +109,7 @@ public final class GamblingModel {
             this.betPendingTicks = 200;
             this.armFeedback();
             Att2Triggers.send(bet.trigger());
+            CurrencyEnabler.onTransaction();
         }
     }
 
@@ -124,6 +126,7 @@ public final class GamblingModel {
             this.waitTicks = 60;
             this.armFeedback();
             Att2Triggers.send(choice.trigger());
+            CurrencyEnabler.onTransaction();
         }
     }
 
@@ -131,6 +134,7 @@ public final class GamblingModel {
         if (cell.isLocked() && cell.trigger() >= 0 && this.isNearTable()) {
             this.armFeedback();
             Att2Triggers.send(cell.trigger());
+            CurrencyEnabler.onTransaction();
         }
     }
 
@@ -139,6 +143,7 @@ public final class GamblingModel {
         this.waitTicks = 60;
         this.armFeedback();
         Att2Triggers.send(2855);
+        CurrencyEnabler.onTransaction();
     }
 
     private void armFeedback() {

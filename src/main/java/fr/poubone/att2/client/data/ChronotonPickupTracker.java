@@ -51,6 +51,7 @@ public final class ChronotonPickupTracker {
                     Vec3 pos = entry.getValue();
                     it.remove();
                     if (!(player.distanceToSqr(pos) > 9.0)) {
+                        CurrencyEnabler.onPickup();
                         WorldToHud.project(pos)
                             .ifPresent(
                                 screen -> {
