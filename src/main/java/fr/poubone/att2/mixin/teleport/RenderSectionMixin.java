@@ -1,0 +1,26 @@
+package fr.poubone.att2.mixin.teleport;
+
+import fr.poubone.att2.client.teleport.TeleportTransitionController;
+import net.minecraft.client.renderer.chunk.SectionRenderDispatcher.RenderSection;
+import net.minecraft.core.BlockPos;
+import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+@Mixin(RenderSection.class)
+public abstract class RenderSectionMixin {
+    @Shadow
+    public abstract BlockPos getRenderOrigin();
+
+    @Inject(method = "getVisibility", at = @At("RETURN"), cancellable = true)
+    private void gtalikeTeleport$applyFallbackTerrainVisibility(long now, CallbackInfoReturnable<Float> cir) {
+        if (TeleportTransitionController.shouldApplyVanillaFallbackTerrainVisibility()) {
+            float visibility = TeleportTransitionController.getFallbackTerrainSectionVisibility(this.getRenderOrigin());
+            if (!(visibility >= 1.0F)) {
+                cir.setReturnValue(cir.getReturnValue() * visibility);
+            }
+        }
+    }
+}

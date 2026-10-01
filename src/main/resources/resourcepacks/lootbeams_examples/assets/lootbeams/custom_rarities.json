@@ -1,0 +1,245 @@
+{
+	"custom_rarities": [
+		{
+			"id": "snowy",
+			"name": "Snowy",
+			"color": "#ddeeff",
+			"config": {
+				"trails": false,
+				"particle_use_constant_vertical_speed": true,
+				"render_name_color": false,
+				"render_rarity_color": true,
+				"particle_texture": "lootbeams:glow",
+				"particle_random_y": false,
+				"particle_y_offset": 2,
+				"particle_lifetime": 40,
+				"particle_size": 0.5,
+				"particle_speed": 0.00001,
+				"particle_speed_x": 0.1,
+				"particle_speed_y": -0.004,
+				"particle_speed_z": 0.1,
+				"particle_count": 10,
+				"pulse_glow": false,
+				"rotate_glow": false,
+				"spin_around_beam": true,
+				"glow_effect_texture": "lootbeams:vortex_2",
+				"glow_effect_radius": 1,
+				"glow_effect_alpha": 1
+			},
+			"selectors": ["%Snow", "%snow"]
+		},
+		{
+			"id": "rainbow_0",
+			"name": "Rainbow",
+			"color": "#FF8000",
+			"animated_color": "3_#FF0000_#FF8000_#FFFF00_#00FF00_#00FFFF_#0000FF_#8000FF",
+			"config": {
+				"particle_texture": "lootbeams:star_2",
+				"particle_use_constant_vertical_speed": true,
+				"render_name_color": false,
+				"render_rarity_color": true,
+				"particle_lifetime": 30,
+				"particle_size": 1,
+				"particle_radius": 0.1,
+				"particle_y_offset": 0,
+				"particle_speed": 0.00001,
+				"particle_speed_x": 0.1,
+				"particle_speed_y": 0.004,
+				"particle_speed_z": 0.1,
+				"particle_count": 10,
+				"spin_around_beam": true,
+				"trails": true,
+				"trail_chance": 0.4,
+				"trail_use_scale": false,
+				"trail_particles_invisible": false
+			},
+			"selectors": ["minecraft:nether_star"]
+		},
+		{
+			"id": "fire_infused",
+			"name": "Fire infused",
+			"color": "#ff4400",
+			"animated_color": "2_#ff4400_#ff0000_#ffff00",
+			"config": {
+				"trails": false,
+				"render_name_color": false,
+				"render_rarity_color": true,
+				"particle_random_y": false,
+				"spin_around_beam": false,
+				"particle_texture": "lootbeams:animated_fire",
+				"particle_size": 2,
+				"particle_radius": 0.4,
+				"particle_speed": 0.00001,
+				"particle_speed_y": 0,
+				"particle_count": 20,
+				"pulse_glow": true,
+				"rotate_glow": false,
+				"glow_effect_texture": "lootbeams:glow",
+				"pulse_glow_min_alpha": 0.6,
+				"pulse_glow_max_alpha": 0.8,
+				"pulse_glow_min_radius": 0.75,
+				"pulse_glow_max_radius": 1
+			},
+			"selectors": ["%ether+~%erite+~%Wart+~%Sprouts+~%Star+~%Quartz"]
+		},
+		{
+			"id": "love",
+			"name": "Love",
+			"color": "#ff6666",
+			"config": {
+				"beam_height": 3,
+				"beam_alpha": 0.6,
+				"trails": false,
+				"render_name_color": false,
+				"render_rarity_color": true,
+				"particle_texture": "lootbeams:heart",
+				"particle_size": 1,
+				"particle_speed_y": 0.0003,
+				"particle_count": 20
+			},
+			"selectors": ["minecraft:pink_bed"]
+		},
+		{
+			"id": "smoke",
+			"name": "Smoke",
+			"color": "#8a8a8a",
+			"config": {
+				"trails": false,
+				"render_name_color": false,
+				"render_rarity_color": true,
+				"particle_texture": "lootbeams:smoke",
+				"particle_count": 18,
+				"particle_lifetime": 55,
+				"particle_size": 1.6,
+				"particle_speed": 0.00001,
+				"particle_speed_x": 0.06,
+				"particle_speed_y": 0.008,
+				"particle_speed_z": 0.06,
+				"particle_use_constant_vertical_speed": true,
+				"particle_random_y": false,
+				"particle_y_offset": 0.15,
+				"beam_alpha": 0.28,
+				"beam_height": 2.4,
+				"pulse_glow": false,
+				"glow_effect_alpha": 0.35
+			}
+		},
+		{
+			"id": "---emerald---",
+			"name": "Emerald Tech",
+			"color": "#40ff80",
+			"config": {
+				"render_droplight_beam": true,
+				"use_glow_gradient": true,
+				"beam_gradient_modifiers": ["+h20", "+s35", "-v50"],
+				"glow_gradient_modifiers": ["+h30", "+s35", "-v50"],
+				"trails": false,
+				"beam_height": 4,
+				"render_item_rarity": false,
+				"pulse_glow": false,
+				"rotate_glow": false,
+				"glow_effect_texture": "lootbeams:tech_1",
+				"glow_effect_radius": 1,
+				"glow_effect_alpha": 1
+			},
+			"selectors": ["minecraft:emerald"]
+		},
+		{
+			"id": "---wither_rose---",
+			"name": "Wither Vortex",
+			"color": "#000000",
+			"config": {
+				"render_item_rarity": false,
+				"pulse_glow": false,
+				"rotate_glow": false,
+				"glow_effect_radius": 1,
+				"glow_effect_alpha": 1,
+				"glow_custom_shader": "glow_vortex_hole"
+			},
+			"selectors": ["minecraft:wither_rose"]
+		},
+		{
+			"id": "example_hex",
+			"name": "Hex Glow",
+			"color": "#66ffcc",
+			"config": {
+				"trails": false,
+				"pulse_glow": false,
+				"rotate_glow": false,
+				"glow_effect_texture": "lootbeams:hex_1",
+				"glow_effect_radius": 1,
+				"glow_effect_alpha": 1,
+				"beam_height": 3.5,
+				"beam_alpha": 0.7
+			}
+		},
+		{
+			"id": "example_spiral",
+			"name": "Spiral Glow",
+			"color": "#88aaff",
+			"config": {
+				"trails": false,
+				"pulse_glow": false,
+				"rotate_glow": false,
+				"glow_effect_texture": "lootbeams:spiral_1",
+				"glow_effect_radius": 1.05,
+				"glow_effect_alpha": 1,
+				"beam_height": 3.5,
+				"beam_alpha": 0.65
+			}
+		},
+		{
+			"id": "droplight_animated",
+			"name": "Animated Droplight",
+			"color": "#ffcc44",
+			"config": {
+				"render_droplight_beam": true,
+				"animate_droplight_beam": true,
+				"droplight_beam_animation_speed": 1.2,
+				"beam_height": 8,
+				"beam_radius": 0.8,
+				"beam_alpha": 0.85,
+				"trails": false,
+				"use_glow_gradient": true
+			}
+		},
+		{
+			"id": "classic_beam",
+			"name": "Classic Beam",
+			"color": "#66aaff",
+			"config": {
+				"render_droplight_beam": false,
+				"solid_beam": true,
+				"glowing_beam": true,
+				"white_center": true,
+				"beam_height": 3,
+				"beam_radius": 0.55,
+				"trails": true
+			}
+		},
+		{
+			"id": "glow_radial",
+			"name": "Radial Glow",
+			"color": "#aa66ff",
+			"config": {
+				"glow_custom_shader": "glow_radial",
+				"use_glow_gradient": true,
+				"glow_effect_radius": 1.2,
+				"glow_effect_alpha": 1,
+				"trails": false
+			}
+		},
+		{
+			"id": "glow_overlay",
+			"name": "Overlay Glow",
+			"color": "#ff88aa",
+			"config": {
+				"glow_custom_shader": "glow_overlay",
+				"glow_effect_texture": "lootbeams:vortex_1",
+				"glow_effect_radius": 1.1,
+				"glow_effect_alpha": 1,
+				"trails": false
+			}
+		}
+	]
+}
