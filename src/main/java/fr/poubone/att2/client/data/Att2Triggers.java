@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.data;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import java.util.ArrayDeque;
 import java.util.Map;
 import net.minecraft.client.Minecraft;
@@ -58,6 +59,12 @@ public final class Att2Triggers {
     }
 
     public static void tick(Minecraft client) {
+        // Flashback's replay server doesn't have the map's ScoreTrigger objective, so these would only fail
+        if (FlashbackCompat.isInReplay()) {
+            QUEUE.clear();
+            return;
+        }
+
         if (!isGameplayPaused(client)) {
             if (cooldown > 0) {
                 cooldown--;

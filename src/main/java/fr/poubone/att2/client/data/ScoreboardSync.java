@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.data;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import fr.poubone.att2.client.input.KeybindManager;
 import java.util.HashMap;
 import java.util.List;
@@ -49,7 +50,8 @@ public final class ScoreboardSync {
 
     public static boolean canSync(Minecraft client) {
         LocalPlayer player = client.player;
-        return player != null && player.connection != null && player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER);
+        return player != null && player.connection != null && player.permissions().hasPermission(Permissions.COMMANDS_GAMEMASTER)
+            && !FlashbackCompat.isInReplay();
     }
 
     public static boolean isCommandFeedback(Component message) {

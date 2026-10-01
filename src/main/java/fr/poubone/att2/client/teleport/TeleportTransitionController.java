@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.teleport;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
@@ -91,6 +92,10 @@ public final class TeleportTransitionController {
     }
 
     public static void startExternal(Minecraft client, Vec3 plannedTarget, int expectedArrivalTicks) {
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         LocalPlayer player = client.player;
         if (player != null) {
             boolean stable = plannedTarget != null;
@@ -122,6 +127,11 @@ public final class TeleportTransitionController {
     private static void start(
         Minecraft client, Vec3 plannedTarget, String targetDimensionId, Runnable action, boolean closeOpenScreen, boolean stablePlannedTarget
     ) {
+        // In a replay the "player" is Flashback's camera, which the transition would hijack
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         LocalPlayer player = client.player;
         if (player != null) {
             stopCustomTravelSound(client);

@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.teleport;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import net.minecraft.client.Minecraft;
 
 public final class TeleportCommandSender {
@@ -13,6 +14,10 @@ public final class TeleportCommandSender {
     }
 
     public static void sendDeferredCommand(String command) {
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         Minecraft client = Minecraft.getInstance();
         if (client.getConnection() != null) {
             bypassNextCommand = true;

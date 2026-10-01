@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.sync;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import com.google.gson.JsonObject;
 import fr.poubone.att2.client.util.ChatItemUtils;
 import fr.poubone.att2.client.util.ModLanguageManager;
@@ -45,6 +46,12 @@ public final class PartySync {
     }
 
     public static void tick(Minecraft client) {
+        if (FlashbackCompat.isInReplay()) {
+            INCOMING.clear();
+            PingMarkers.tick(client);
+            return;
+        }
+
         drainIncoming(client);
         PingMarkers.tick(client);
         if (client.player != null && client.level != null && PartySyncHttp.isConfigured()) {
@@ -104,6 +111,10 @@ public final class PartySync {
     }
 
     public static void shareHeldItem(Minecraft client) {
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         if (client.player != null && client.level != null) {
             ItemStack stack = client.player.getMainHandItem();
             if (stack.isEmpty()) {
@@ -129,6 +140,10 @@ public final class PartySync {
     }
 
     public static void pingLookedAt(Minecraft client) {
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         if (client.player != null && client.level != null) {
             if (!PingMarkers.dismissLookedAt()) {
                 PingTargeting.Target target = PingTargeting.lookAt(client);

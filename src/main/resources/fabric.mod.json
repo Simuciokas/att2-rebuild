@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "att2",
-  "version": "2.0.3+replayfix.1",
+  "version": "2.0.3+replayfix.2",
   "name": "ATT2_Project",
   "description": "Client-side companion mod for the Across The Time II adventure map (remaster 1.1.1): custom HUD, quest book, stat menus and cinematic teleporter transitions.",
   "authors": [

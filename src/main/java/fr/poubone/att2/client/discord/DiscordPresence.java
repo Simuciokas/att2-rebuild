@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.discord;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
@@ -55,11 +56,23 @@ public final class DiscordPresence {
         }
     }
 
+    private static boolean clearedForReplay = false;
+
     public static void tick() {
         Minecraft client = Minecraft.getInstance();
         if (client.player != null) {
             syncWorker();
             if (wanted) {
+                if (FlashbackCompat.isInReplay()) {
+                    if (!clearedForReplay) {
+                        clearedForReplay = true;
+                        lastFingerprint = "";
+                        enqueueClear();
+                    }
+                    return;
+                }
+                clearedForReplay = false;
+
                 String fingerprint = buildFingerprint();
                 long now = System.currentTimeMillis();
                 if (!fingerprint.equals(lastFingerprint) || now - lastPushMs >= 15000L) {
