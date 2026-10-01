@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.gambling;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import fr.poubone.att2.client.data.ScoreCache;
 import fr.poubone.att2.client.gambling.widget.ListEntryButton;
 import fr.poubone.att2.client.hud.HUDConfig;
@@ -60,6 +61,11 @@ public class CharlesScreen extends ShopPanelScreen {
     }
 
     public static void open(CharlesScreen.Tab tab) {
+        // Menus re-opened by replayed chat would never close, as closing them is never recorded
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         if (HUDConfig.get().charlesAutoOpen) {
             Minecraft client = Minecraft.getInstance();
             boolean alreadyOpen = client.screen instanceof CharlesScreen;

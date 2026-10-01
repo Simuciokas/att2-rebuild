@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.shop;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import fr.poubone.att2.client.data.CurrencyModel;
 import fr.poubone.att2.client.data.ScoreCache;
 import fr.poubone.att2.client.hud.HUDConfig;
@@ -48,6 +49,11 @@ public class ShopScreen extends Screen {
     }
 
     public static void open() {
+        // Menus re-opened by replayed chat would never close, as closing them is never recorded
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         if (HUDConfig.get().isShopMenuEnabled(ShopModel.get().menuTypeId())) {
             Minecraft client = Minecraft.getInstance();
             if (client.screen instanceof ShopScreen open) {

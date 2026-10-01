@@ -1,5 +1,6 @@
 package fr.poubone.att2.client.miner;
 
+import fr.poubone.att2.client.compat.FlashbackCompat;
 import fr.poubone.att2.client.data.ScoreCache;
 import fr.poubone.att2.client.hud.HUDConfig;
 import fr.poubone.att2.client.rune.RuneCatalog;
@@ -57,6 +58,11 @@ public class MinerShopScreen extends ShopPanelScreen {
     }
 
     public static void open(MinerCatalog.Tab tab) {
+        // Menus re-opened by replayed chat would never close, as closing them is never recorded
+        if (FlashbackCompat.isInReplay()) {
+            return;
+        }
+
         if (HUDConfig.get().minerMenuEnabled) {
             Minecraft client = Minecraft.getInstance();
             if (!(client.screen instanceof MinerShopScreen)) {
