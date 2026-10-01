@@ -82,6 +82,10 @@ public final class PartySyncHttp {
     }
 
     private static JsonObject post(String path, JsonObject body) throws Exception {
+        if (!HUDConfig.get().partySyncEnabled) {
+            throw new IllegalStateException("party sync is disabled");
+        }
+
         String base = configuredBase();
         if (base == null) {
             throw new IllegalStateException("party sync url is empty");
@@ -120,7 +124,7 @@ public final class PartySyncHttp {
     }
 
     public static boolean isConfigured() {
-        return configuredBase() != null;
+        return HUDConfig.get().partySyncEnabled && configuredBase() != null;
     }
 
     public static final class ApiException extends IllegalStateException {

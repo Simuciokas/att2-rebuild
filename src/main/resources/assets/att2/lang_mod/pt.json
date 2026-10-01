@@ -14,6 +14,7 @@
   "drop_lock.confirm": "Item raro! Repita a ação para confirmar o descarte",
   "screen.hud_config.discord_rpc": "Presença no Discord (Rich Presence)",
   "screen.hud_config.discord_show_quest": "Discord: mostrar a missão selecionada",
+  "screen.hud_config.party_sync": "Sincronização de grupo (pings e compartilhamento de itens)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "Explorando o mundo",
   "discord.button.map": "Descobrir o mapa",

@@ -14,6 +14,7 @@
   "drop_lock.confirm": "レアアイテム！もう一度操作して破棄を確定",
   "screen.hud_config.discord_rpc": "Discordリッチプレゼンス",
   "screen.hud_config.discord_show_quest": "Discord：選択中のクエストを表示",
+  "screen.hud_config.party_sync": "パーティー同期（ピン・アイテム共有）",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "世界を探索中",
   "discord.button.map": "マップを見る",

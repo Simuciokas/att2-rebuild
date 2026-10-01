@@ -14,6 +14,7 @@
   "drop_lock.confirm": "Seltener Gegenstand! Aktion wiederholen, um das Wegwerfen zu bestätigen",
   "screen.hud_config.discord_rpc": "Discord-Präsenz (Rich Presence)",
   "screen.hud_config.discord_show_quest": "Discord: ausgewählte Quest anzeigen",
+  "screen.hud_config.party_sync": "Gruppen-Sync (Pings & Item-Teilen)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "Erkundet die Welt",
   "discord.button.map": "Die Map entdecken",

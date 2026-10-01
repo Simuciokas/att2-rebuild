@@ -14,6 +14,7 @@
   "drop_lock.confirm": "عنصر نادر! كرر الإجراء لتأكيد الإسقاط",
   "screen.hud_config.discord_rpc": "حضور Discord (Rich Presence)",
   "screen.hud_config.discord_show_quest": "Discord: إظهار المهمة المحددة",
+  "screen.hud_config.party_sync": "مزامنة الفريق (الإشارات ومشاركة العناصر)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "يستكشف العالم",
   "discord.button.map": "اكتشاف الخريطة",

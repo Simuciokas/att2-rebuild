@@ -14,6 +14,7 @@
   "drop_lock.confirm": "희귀 아이템! 버리려면 다시 누르세요",
   "screen.hud_config.discord_rpc": "Discord 리치 프레즌스",
   "screen.hud_config.discord_show_quest": "Discord: 선택한 퀘스트 표시",
+  "screen.hud_config.party_sync": "파티 동기화 (핑 및 아이템 공유)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "세계 탐험 중",
   "discord.button.map": "맵 둘러보기",

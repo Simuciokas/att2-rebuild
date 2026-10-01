@@ -156,10 +156,11 @@ public class HUDConfigScreen extends Screen {
                     config.discordRichPresence = v;
                     DiscordPresence.onConfigChanged();
                 });
-                this.addToggle(contentX, contentY, colW, "screen.hud_config.discord_show_quest", config.discordShowQuest, v -> {
+                contentY = this.addToggle(contentX, contentY, colW, "screen.hud_config.discord_show_quest", config.discordShowQuest, v -> {
                     config.discordShowQuest = v;
                     DiscordPresence.onConfigChanged();
                 });
+                this.addToggle(contentX, contentY, colW, "screen.hud_config.party_sync", config.partySyncEnabled, v -> config.partySyncEnabled = v);
         }
 
         this.addRenderableWidget(Button.builder(ModLanguageManager.get("screen.hud_config.save_and_close"), b -> {

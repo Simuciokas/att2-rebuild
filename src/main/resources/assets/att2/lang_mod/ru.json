@@ -14,6 +14,7 @@
   "drop_lock.confirm": "Редкий предмет! Повторите действие, чтобы подтвердить выброс",
   "screen.hud_config.discord_rpc": "Присутствие Discord (Rich Presence)",
   "screen.hud_config.discord_show_quest": "Discord: показывать выбранный квест",
+  "screen.hud_config.party_sync": "Синхронизация группы (пинги и обмен предметами)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "Исследует мир",
   "discord.button.map": "Открыть карту",

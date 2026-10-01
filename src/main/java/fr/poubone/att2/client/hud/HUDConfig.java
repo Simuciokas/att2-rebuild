@@ -38,7 +38,7 @@ public class HUDConfig {
     public Map<String, HudSlot> slots = new LinkedHashMap<>();
     public boolean dropLockEnabled = true;
     public List<String> dropLockRarities = new ArrayList<>(List.of("myt", "que"));
-    public boolean discordRichPresence = true;
+    public boolean discordRichPresence = false;
     public boolean discordShowQuest = true;
     public boolean discordRegionImage = true;
     public String discordApplicationId = "1545088290577981521";
@@ -53,6 +53,8 @@ public class HUDConfig {
     public String modLanguage = "fr";
     public String partySyncUrl = "https://sync.guide-att2.com";
     public String partySyncToken = "";
+    public boolean partySyncEnabled = false;
+    public int privacyDefaultsVersion = 0;
     public List<String> renderRarities = new ArrayList<>(
         List.of("com", "cur", "epi", "epi_set", "leg", "leg_armset", "misc", "myt", "que", "rar", "spe", "ult", "unc", "unk", "epi_esc", "esc")
     );
@@ -213,6 +215,15 @@ public class HUDConfig {
 
         if (INSTANCE.partySyncToken == null) {
             INSTANCE.partySyncToken = "";
+        }
+
+        // Online features are opt-in. Configs written before this saved the old on-by-default values, so switch
+        // them off once; anything enabled afterwards is kept
+        if (INSTANCE.privacyDefaultsVersion < 1) {
+            INSTANCE.discordRichPresence = false;
+            INSTANCE.partySyncEnabled = false;
+            INSTANCE.privacyDefaultsVersion = 1;
+            save();
         }
 
         if (INSTANCE.shopMenus == null) {

@@ -14,6 +14,7 @@
   "drop_lock.confirm": "稀有物品！再按一次以确认丢弃",
   "screen.hud_config.discord_rpc": "Discord 状态（Rich Presence）",
   "screen.hud_config.discord_show_quest": "Discord：显示所选任务",
+  "screen.hud_config.party_sync": "队伍同步（标记与物品分享）",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "正在探索世界",
   "discord.button.map": "了解地图",

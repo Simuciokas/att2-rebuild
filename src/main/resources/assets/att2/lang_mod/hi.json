@@ -14,6 +14,7 @@
   "drop_lock.confirm": "दुर्लभ आइटम! गिराने की पुष्टि के लिए फिर दबाएँ",
   "screen.hud_config.discord_rpc": "Discord उपस्थिति (Rich Presence)",
   "screen.hud_config.discord_show_quest": "Discord: चुनी गई क्वेस्ट दिखाएँ",
+  "screen.hud_config.party_sync": "पार्टी सिंक (पिंग और आइटम साझा करना)",
   "discord.details": "Across The Time II – Time For Regrets",
   "discord.exploring": "दुनिया की खोज",
   "discord.button.map": "मैप देखें",
