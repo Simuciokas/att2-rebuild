@@ -10,7 +10,8 @@
   "contributors": [
     "Kenney (CC0 — RPG UI assets for the quest journal)",
     "LukenSkyne / Ping Wheel (MIT — ping rendering, arrow and sound)",
-    "Codex / hookuru_ (Grand Teleport transition code)"
+    "Codex / hookuru_ (Grand Teleport transition code)",
+    "Simuciokas (unofficial rebuild: Flashback replay fixes, opt-in online features)"
   ],
   "license": "MIT",
   "icon": "assets/att2/icon.jpg",
