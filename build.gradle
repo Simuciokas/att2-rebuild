@@ -14,6 +14,11 @@ dependencies {
     mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+    // Only used by scripts/update-upstream.sh so Loom remaps an upstream release to Mojang names for decompiling
+    if (project.hasProperty("upstreamJar")) {
+        modCompileOnly files(project.property("upstreamJar"))
+    }
 }
 
 tasks.withType(JavaCompile).configureEach {
